@@ -1,0 +1,21 @@
+// C++ code
+//
+int number = 0;
+
+void setup()
+{
+  pinMode(A0, INPUT);
+  Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop()
+{
+  if ((-40 + 0.488155 * (analogRead(A0) - 20)) != 0) {
+    Serial.println((-40 + 0.488155 * (analogRead(A0) - 20)));
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(1000); // Wait for 1000 millisecond(s)
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(1000); // Wait for 1000 millisecond(s)
+  }
+}
