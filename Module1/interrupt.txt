@@ -1,0 +1,44 @@
+int read = 0;
+int BTN_PIN = 2;
+int LED = 13;
+
+
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(BTN_PIN, INPUT);
+  
+  pinMode(LED, OUTPUT);
+  
+
+
+  //interrupt
+  attachInterrupt(digitalPinToInterrupt(BTN_PIN), motion, CHANGE);
+}
+
+void loop()
+{
+  
+  delay(100); 
+}
+
+
+
+void motion()
+{
+  
+  read = digitalRead(BTN_PIN);
+  
+  if (read == HIGH)
+  {
+    digitalWrite(LED, HIGH); 
+    Serial.println("On");
+  } 
+  else 
+  {
+    digitalWrite(LED, LOW); 
+    Serial.println("Off");
+  }
+  
+}
